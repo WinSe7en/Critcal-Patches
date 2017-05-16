@@ -21,5 +21,6 @@ write "There are " $SMSMemebers.Count "objects for a Machine Policy Sync"
 foreach ($SMSMember in $SMSMemebers) {
     $SMSMember
     Invoke-WMIMethod -ComputerName $SMSMember.name -Namespace root\ccm -Class SMS_CLIENT -Name TriggerSchedule "{00000000-0000-0000-0000-000000000021}" -Verbose
+    start-sleep -s 45 -Verbose
     Invoke-WMIMethod -ComputerName $SMSMember.name -Namespace root\ccm -Class SMS_CLIENT -Name TriggerSchedule "{00000000-0000-0000-0000-000000000022}" -Verbose
 }
